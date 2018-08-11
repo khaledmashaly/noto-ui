@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NoteListComponent } from './note-list/note-list.component';
+import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NoteListComponent
+    NoteListComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
