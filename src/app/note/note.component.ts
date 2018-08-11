@@ -7,10 +7,7 @@ import { Note } from '../shared/note';
   styleUrls: ['./note.component.sass']
 })
 export class NoteComponent implements OnInit {
-  note: Note = {
-    title: 'The title of the damn note',
-    body: 'The absolutely massive body of this freaking awesome note, oh yeahhhhhhhh!!!!!!!!!'
-  };
+  @Input() note: Note;
 
   constructor() { }
 
