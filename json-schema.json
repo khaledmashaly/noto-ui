@@ -11,19 +11,26 @@
         },
         "notes": {
             "type": "array",
+            "minItems": 10,
+            "maxItems": 25,
             "items": {
                 "type": "object",
                 "properties": {
                     "title": {
                         "type": "string"
                     },
-                    "details": {
+                    "body": {
                         "type": "string",
-                        "faker": "lorem.paragraph"
+                        "faker": {
+                            "lorem.paragraph": [
+                                10
+                            ]
+                        }
                     }
                 },
                 "required": [
-                    "title"
+                    "title",
+                    "body"
                 ]
             }
         }
