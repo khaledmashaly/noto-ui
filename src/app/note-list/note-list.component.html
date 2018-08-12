@@ -1,1 +1,3 @@
-<app-note [note]="note"></app-note>
+<div class="note-list">
+  <app-note *ngFor="let note of noteList" [note]="note"></app-note>
+</div>
