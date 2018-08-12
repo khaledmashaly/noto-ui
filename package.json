@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "fake-server": ""
+    "fake-api": "node src/dev/generate-fake-data.js && json-server src/dev/db.json"
   },
   "private": true,
   "dependencies": {

@@ -1,14 +1,6 @@
 module.exports = {
     "type": "object",
     "properties": {
-        "name": {
-            "type": "string",
-            "faker": "name.findName"
-        },
-        "email": {
-            "type": "string",
-            "faker": "internet.email"
-        },
         "notes": {
             "type": "array",
             "minItems": 10,
@@ -33,8 +25,6 @@ module.exports = {
         }
     },
     "required": [
-        "name",
-        "email",
         "notes"
     ]
 };
