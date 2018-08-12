@@ -1,4 +1,4 @@
-{
+module.exports = {
     "type": "object",
     "properties": {
         "name": {
@@ -22,15 +22,12 @@
                     "body": {
                         "type": "string",
                         "faker": {
-                            "lorem.paragraph": [
-                                10
-                            ]
+                            "lorem.paragraph": [10]
                         }
                     }
                 },
                 "required": [
-                    "title",
-                    "body"
+                    "title"
                 ]
             }
         }
@@ -40,4 +37,4 @@
         "email",
         "notes"
     ]
-}
+};
