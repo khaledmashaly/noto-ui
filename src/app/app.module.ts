@@ -8,14 +8,12 @@ import { MatToolbarModule, MatIconModule, MatButtonModule, MatCardModule } from 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NoteListComponent } from './note-list/note-list.component';
-import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NoteListComponent,
-    NoteComponent
+    NoteListComponent
   ],
   imports: [
     BrowserModule,

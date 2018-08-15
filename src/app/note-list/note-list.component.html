@@ -1,3 +1,11 @@
 <div class="note-list">
-  <app-note *ngFor="let note of noteList" [note]="note"></app-note>
+  <mat-card class="note-card" *ngFor="let note of noteList">
+    <mat-card-title>
+      {{note.title}}
+      <button mat-icon-button (click)="deleteNote(note.id)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-title>
+    <mat-card-content>{{note.body}}</mat-card-content>
+  </mat-card>
 </div>
