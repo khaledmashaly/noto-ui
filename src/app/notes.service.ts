@@ -31,6 +31,14 @@ export class NotesService {
                     );
   }
 
+  createNote(note: Note): Observable<Note[]> {
+    const url = `${api}/${note.id}`;
+    return this.http.post<Note[]>(api, note, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteNote', []))
+      );
+  }
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.
