@@ -1,14 +1,16 @@
-<div class="note-list">
-  <mat-card class="note-card" *ngFor="let note of noteList">
-    <mat-card-title>
-      {{note.title}}
-      <button mat-icon-button (click)="deleteNote(note.id)">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-card-title>
-    <mat-card-content>{{note.body}}</mat-card-content>
-  </mat-card>
+<div class="note-list-wrapper">
+  <div class="note-list">
+    <mat-card class="note-card" *ngFor="let note of noteList">
+      <mat-card-title>
+        {{note.title}}
+        <button mat-icon-button (click)="deleteNote(note.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-title>
+      <mat-card-content>{{note.body}}</mat-card-content>
+    </mat-card>
+  </div>
+  <button mat-fab color="primary" class="fab" (click)="createNote()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
-<button mat-button (click)="createNote()">
-  <mat-icon>add</mat-icon> new note
-</button>
