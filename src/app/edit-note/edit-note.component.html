@@ -6,11 +6,11 @@
     <h2>edit note</h2>
     <form class="example-form">
       <mat-form-field>
-        <input matInput placeholder="Title">
+        <input matInput [(ngModel)]="note.title" name="title" placeholder="Title">
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput placeholder="Note"></textarea>
+        <textarea matInput [(ngModel)]="note.body" name="body" placeholder="Note"></textarea>
       </mat-form-field>
     </form>
   </div>
