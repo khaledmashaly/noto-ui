@@ -2,12 +2,26 @@
   <div class="note-list">
     <mat-card class="note-card" *ngFor="let note of noteList">
       <mat-card-title>
-        {{note.title}}
-        <button mat-icon-button (click)="deleteNote(note.id)">
-          <mat-icon>close</mat-icon>
+
+        <p>{{note.title}}</p>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteNote(note.id)">
+            <mat-icon>delete</mat-icon>
+            <span>delete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>edit</span>
+          </button>
+        </mat-menu>
       </mat-card-title>
+
       <mat-card-content>{{note.body}}</mat-card-content>
+
     </mat-card>
   </div>
   <button mat-fab color="primary" class="fab" (click)="createNote()">
