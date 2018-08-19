@@ -15,6 +15,14 @@ const httpOptions = {
 export class NotesService {
   constructor(private http: HttpClient) { }
 
+  getNote(id: number): Observable<Note> {
+    const url = `${api}/${id}`;
+    return this.http.get<Note>(url)
+                    .pipe(
+                      catchError(this.handleError<Note>(`getNote id=${id}`))
+                    );
+  }
+
   getNotes(): Observable<Note[]> {
     return this.http.get<Note[]>(api)
                     .pipe(
@@ -32,6 +40,13 @@ export class NotesService {
   }
 
   createNote(note: Note): Observable<Note[]> {
+    return this.http.post<Note[]>(api, note, httpOptions)
+      .pipe(
+        catchError(this.handleError('createNote', []))
+      );
+  }
+
+  editNote(note: Note): Observable<Note[]> {
     const url = `${api}/${note.id}`;
     return this.http.post<Note[]>(api, note, httpOptions)
       .pipe(
