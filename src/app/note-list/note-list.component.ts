@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../shared/note';
 import { NotesService } from '../notes.service';
-import { jsf } from 'json-schema-faker';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-note-list',
@@ -10,7 +10,10 @@ import { jsf } from 'json-schema-faker';
 })
 export class NoteListComponent implements OnInit {
   noteList: Note[];
-  constructor(private notesService: NotesService) { }
+  constructor(
+    private notesService: NotesService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getNotes();
@@ -29,11 +32,15 @@ export class NoteListComponent implements OnInit {
   createNote(): void {
     const newNote: Note = {
       id: this.noteList[this.noteList.length - 1].id + 1,
-      title: 'title of the new note',
-      body: 'Quasi necessitatibus fugiat ad autem similique. In consequatur nemo ut velit maxime ut minus nemo. Ea libero ut quia. Qui ea tempora non. Ullam non ut. Deserunt facilis repellendus. Similique soluta dolor accusantium et. Omnis eos et id. Dolorem eos sit a veritatis repellendus qui. Illum voluptates exercitationem et iusto explicabo beatae iure. Sed delectus ut vero et temporibus reiciendis molestiae ea ut.'
+      title: '',
+      body: ''
     };
-    this.notesService.createNote(newNote).subscribe();
-    this.noteList.push(newNote);
+    this.notesService.createNote(newNote)
+                      .subscribe(() => this.editNote(newNote.id));
+  }
+
+  editNote(id: number): void {
+    this.router.navigate(['/edit-note/', id]);
   }
 
 }
