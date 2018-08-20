@@ -46,11 +46,11 @@ export class NotesService {
       );
   }
 
-  editNote(note: Note): Observable<Note[]> {
+  editNote(note: Note): Observable<any> {
     const url = `${api}/${note.id}`;
-    return this.http.post<Note[]>(api, note, httpOptions)
+    return this.http.put(url, note, httpOptions)
       .pipe(
-        catchError(this.handleError('deleteNote', []))
+        catchError(this.handleError<any>('editNote'))
       );
   }
 

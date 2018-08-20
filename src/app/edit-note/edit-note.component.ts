@@ -3,6 +3,7 @@ import { Note } from '../shared/note';
 import { NotesService } from '../notes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-note',
@@ -27,6 +28,15 @@ export class EditNoteComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.noteService.getNote(id)
                     .subscribe(note => this.note = note);
+  }
+
+  editNote(note: Note): void {
+    this.noteService.editNote(note)
+                    .subscribe(() => this.goBack());
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

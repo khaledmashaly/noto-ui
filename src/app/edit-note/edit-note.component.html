@@ -12,6 +12,10 @@
       <mat-form-field>
         <textarea matInput [(ngModel)]="note.body" name="body" placeholder="Note"></textarea>
       </mat-form-field>
+      <button mat-raised-button color="primary" (click)="editNote(note)">
+        <mat-icon>save</mat-icon>
+        save
+      </button>
     </form>
   </div>
 </div>
