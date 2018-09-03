@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 export class EditNoteComponent implements OnInit {
 
   note: Note = {
-    id: 0,
     title: '',
     body: ''
   };
@@ -25,7 +24,7 @@ export class EditNoteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.noteService.getNote(id)
                     .subscribe(note => this.note = note);
   }

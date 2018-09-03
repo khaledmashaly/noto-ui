@@ -9,11 +9,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteNote(note.id)">
+          <button mat-menu-item (click)="deleteNote(note._id)">
             <mat-icon>delete</mat-icon>
             <span>delete</span>
           </button>
-          <button mat-menu-item (click)="editNote(note.id)">
+          <button mat-menu-item (click)="editNote(note._id)">
             <mat-icon>edit</mat-icon>
             <span>edit</span>
           </button>
