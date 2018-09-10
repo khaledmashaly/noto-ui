@@ -30,8 +30,8 @@ export class NoteListComponent implements OnInit {
   }
 
   createNote(): void {
-    this.notesService.createNote({title:'',body:''})
-                      .subscribe((notes) => this.editNote(notes[0]._id));
+    this.notesService.createNote({ title: '', body: '' })
+                      .subscribe(id => this.editNote(id));
   }
 
   editNote(_id: string): void {

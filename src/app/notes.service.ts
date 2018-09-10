@@ -39,10 +39,10 @@ export class NotesService {
                     );
   }
 
-  createNote(note: Note): Observable<Note[]> {
-    return this.http.post<Note[]>(api, note, httpOptions)
+  createNote(note: Note): Observable<string> {
+    return this.http.post(api, note, { ...httpOptions, responseType: 'text' })
       .pipe(
-        catchError(this.handleError('createNote', []))
+        catchError(this.handleError('createNote', 'some fake id'))
       );
   }
 
