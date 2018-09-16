@@ -18,13 +18,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
+import { SignFormComponent } from './sign-form/sign-form.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
 		NoteListComponent,
-		EditNoteComponent
+		EditNoteComponent,
+		SignFormComponent
 	],
 	imports: [
 		BrowserModule,
