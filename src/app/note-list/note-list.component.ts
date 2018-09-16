@@ -4,38 +4,40 @@ import { NotesService } from '../notes.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-note-list',
-  templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.sass']
+	selector: 'app-note-list',
+	templateUrl: './note-list.component.html',
+	styleUrls: ['./note-list.component.sass']
 })
 export class NoteListComponent implements OnInit {
-  noteList: Note[];
-  constructor(
-    private notesService: NotesService,
-    private router: Router
-  ) { }
+	noteList: Note[];
+	constructor(
+		private notesService: NotesService,
+		private router: Router
+	) { }
 
-  ngOnInit() {
-    this.getNotes();
-  }
+	ngOnInit() {
+		this.getNotes();
+	}
 
-  getNotes(): void {
-    this.notesService.getNotes()
-                     .subscribe(notes => this.noteList = notes);
-  }
+	getNotes(): void {
+		this.notesService.getNotes()
+			.subscribe(notes => this.noteList = notes);
+	}
 
-  deleteNote(_id: string): void {
-    this.noteList = this.noteList.filter(note => note._id !== _id);
-    this.notesService.deleteNote(_id).subscribe();
-  }
+	deleteNote(_id: string): void {
+		this.noteList = this.noteList.filter(note => note._id !== _id);
+		this.notesService.deleteNote(_id).subscribe();
+	}
 
-  createNote(): void {
-    this.notesService.createNote({ title: '', body: '' })
-                      .subscribe(id => this.editNote(id));
-  }
+	createNote(): void {
+		this.notesService.createNote({ title: '', body: '' })
+			.subscribe(res => {
+				const id = res.replace(/"/g, '');
+				this.editNote(id);
+			});
+	}
 
-  editNote(_id: string): void {
-    this.router.navigate(['/edit-note/', _id]);
-  }
-
+	editNote(id: string): void {
+		this.router.navigate(['/edit-note/', id]);
+	}
 }
