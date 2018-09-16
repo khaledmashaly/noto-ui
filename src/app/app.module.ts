@@ -6,13 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import {
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatInputModule,
-  MatMenuModule
-  } from '@angular/material';
+	MatToolbarModule,
+	MatIconModule,
+	MatButtonModule,
+	MatCardModule,
+	MatInputModule,
+	MatMenuModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,26 +20,26 @@ import { NoteListComponent } from './note-list/note-list.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    NoteListComponent,
-    EditNoteComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatMenuModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		NoteListComponent,
+		EditNoteComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		FormsModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatButtonModule,
+		MatCardModule,
+		MatInputModule,
+		MatMenuModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,30 +1,29 @@
 <div class="note-list-wrapper">
-  <div class="note-list">
-    <mat-card class="note-card" *ngFor="let note of noteList">
-      <mat-card-title>
+	<div class="note-list">
+		<mat-card class="note-card" *ngFor="let note of noteList">
+			<mat-card-title>
+				<p>{{note.title}}</p>
 
-        <p>{{note.title}}</p>
+				<button mat-icon-button [matMenuTriggerFor]="menu">
+					<mat-icon>more_vert</mat-icon>
+				</button>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteNote(note._id)">
-            <mat-icon>delete</mat-icon>
-            <span>delete</span>
-          </button>
-          <button mat-menu-item (click)="editNote(note._id)">
-            <mat-icon>edit</mat-icon>
-            <span>edit</span>
-          </button>
-        </mat-menu>
-      </mat-card-title>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item (click)="deleteNote(note._id)">
+						<mat-icon>delete</mat-icon>
+						<span>delete</span>
+					</button>
 
-      <mat-card-content>{{note.body}}</mat-card-content>
-
-    </mat-card>
-  </div>
-  <button mat-fab color="primary" class="fab" (click)="createNote()">
-    <mat-icon>add</mat-icon>
-  </button>
+					<button mat-menu-item (click)="editNote(note._id)">
+						<mat-icon>edit</mat-icon>
+						<span>edit</span>
+					</button>
+				</mat-menu>
+			</mat-card-title>
+			<mat-card-content>{{note.body}}</mat-card-content>
+		</mat-card>
+	</div>
+	<button mat-fab color="primary" class="fab" (click)="createNote()">
+		<mat-icon>add</mat-icon>
+	</button>
 </div>

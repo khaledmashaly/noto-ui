@@ -3,39 +3,39 @@ import { Note } from '../shared/note';
 import { NotesService } from '../notes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-edit-note',
-  templateUrl: './edit-note.component.html',
-  styleUrls: ['./edit-note.component.sass']
+	selector: 'app-edit-note',
+	templateUrl: './edit-note.component.html',
+	styleUrls: ['./edit-note.component.sass']
 })
 export class EditNoteComponent implements OnInit {
 
-  note: Note = {
-    title: '',
-    body: ''
-  };
+	note: Note = {
+		title: '',
+		body: ''
+	};
 
-  constructor(
-    private noteService: NotesService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) { }
+	constructor(
+		private noteService: NotesService,
+		private route: ActivatedRoute,
+		private location: Location
+	) { }
 
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.noteService.getNote(id)
-                    .subscribe(note => this.note = note);
-  }
+	ngOnInit() {
+		const id = this.route.snapshot.paramMap.get('id');
+		this.noteService
+			.getNote(id)
+			.subscribe(note => this.note = note);
+	}
 
-  editNote(note: Note): void {
-    this.noteService.editNote(note)
-                    .subscribe(() => this.goBack());
-  }
+	editNote(note: Note): void {
+		this.noteService
+			.editNote(note)
+			.subscribe(() => this.goBack());
+	}
 
-  goBack(): void {
-    this.location.back();
-  }
-
+	goBack(): void {
+		this.location.back();
+	}
 }
