@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "mock-api": "node src/dev/generate-fake-data.js",
-    "api-server": "json-server src/dev/db.json"
+    "api-server": "json-server --id \"_id\" src/dev/db.json"
   },
   "private": true,
   "dependencies": {
