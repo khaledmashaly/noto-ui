@@ -8,7 +8,7 @@ module.exports = {
 			items: {
 				type: 'object',
 				properties: {
-					id: {
+					_id: {
 						type: 'string',
 						faker: 'random.uuid'
 					},
@@ -23,7 +23,7 @@ module.exports = {
 					}
 				},
 				required: [
-					'id',
+					'_id',
 					'title'
 				]
 			}
