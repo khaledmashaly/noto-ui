@@ -3,7 +3,6 @@ import { User } from '../shared/user';
 import { AuthService } from '../auth.service';
 
 @Component({
-	selector: 'app-sign-form',
 	templateUrl: './sign-form.component.html',
 	styleUrls: ['./sign-form.component.sass']
 })

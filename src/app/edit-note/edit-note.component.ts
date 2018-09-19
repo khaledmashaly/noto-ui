@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-	selector: 'app-edit-note',
 	templateUrl: './edit-note.component.html',
 	styleUrls: ['./edit-note.component.sass']
 })

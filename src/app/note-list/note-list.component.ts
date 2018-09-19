@@ -4,7 +4,6 @@ import { NotesService } from '../notes.service';
 import { Router } from '@angular/router';
 
 @Component({
-	selector: 'app-note-list',
 	templateUrl: './note-list.component.html',
 	styleUrls: ['./note-list.component.sass']
 })
