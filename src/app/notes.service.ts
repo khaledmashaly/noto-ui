@@ -26,10 +26,10 @@ export class NotesService {
 			.pipe( catchError(this.handleError('getNotes', [])) );
 	}
 
-	deleteNote(id: string): Observable<Note[]> {
+	deleteNote(id: string): Observable<{}> {
 		const url = `${api}/${id}`;
 		console.log(`deleted note _id ${id}`);
-		return this.http.delete<Note[]>(url, httpOptions)
+		return this.http.delete(url)
 			.pipe( catchError(this.handleError('deleteNote', [])) );
 	}
 
