@@ -9,7 +9,10 @@ import { AuthService } from '../auth.service';
 })
 export class SignFormComponent implements OnInit {
 
-	user: User;
+	user: User = {
+		email: '',
+		password: ''
+	};
 
 	constructor(private authService: AuthService) { }
 
