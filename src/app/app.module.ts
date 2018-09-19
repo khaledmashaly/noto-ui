@@ -19,6 +19,7 @@ import { HeaderComponent } from './header/header.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SignFormComponent } from './sign-form/sign-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,8 @@ import { SignFormComponent } from './sign-form/sign-form.component';
 		HeaderComponent,
 		NoteListComponent,
 		EditNoteComponent,
-		SignFormComponent
+		SignFormComponent,
+		ProfileComponent
 	],
 	imports: [
 		BrowserModule,
