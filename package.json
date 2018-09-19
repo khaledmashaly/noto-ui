@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently --names \"API,NG\" -c \"bgBlue.bold,bgRed.bold\" \"json-server src/dev/db.json\" \"ng serve --open\"",
+    "start": "concurrently --names \"API,NG\" -c \"bgBlue.bold,bgRed.bold\" \"npm run api-server\" \"ng serve --open\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
