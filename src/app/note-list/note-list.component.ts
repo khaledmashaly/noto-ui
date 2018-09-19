@@ -37,6 +37,6 @@ export class NoteListComponent implements OnInit {
 	}
 
 	editNote(id: string): void {
-		this.router.navigate(['/edit-note/', id]);
+		this.router.navigate(['/edit-note', id]);
 	}
 }
