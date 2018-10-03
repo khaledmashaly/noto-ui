@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Note } from '../shared/note';
 import { NotesService } from '../notes.service';
-import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './note-list.component.html',
@@ -23,9 +23,9 @@ export class NoteListComponent implements OnInit {
 			.subscribe(notes => this.noteList = notes);
 	}
 
-	deleteNote(_id: string): void {
-		this.noteList = this.noteList.filter(note => note._id !== _id);
-		this.notesService.deleteNote(_id).subscribe();
+	deleteNote(id: string): void {
+		this.noteList = this.noteList.filter(note => note._id !== id);
+		this.notesService.deleteNote(id).subscribe();
 	}
 
 	createNote(): void {
