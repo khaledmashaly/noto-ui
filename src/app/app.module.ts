@@ -20,6 +20,8 @@ import { NoteListComponent } from './note-list/note-list.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SignFormComponent } from './sign-form/sign-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
 	declarations: [
@@ -28,7 +30,9 @@ import { ProfileComponent } from './profile/profile.component';
 		NoteListComponent,
 		EditNoteComponent,
 		SignFormComponent,
-		ProfileComponent
+		ProfileComponent,
+		RegisterComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,
