@@ -1,21 +1,87 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './shared/user';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { User } from './shared/user';
+import { TokenResponse, UserDetails } from './shared/auth';
 
-const authApi = 'http://localhost:3000/auth';
-const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+let authApi = 'http://localhost:3000/auth';
+const postOptions = {
+	headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+const tokenName = 'jwt-token';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
+	private token = '';
 
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient, private router: Router) { }
 
-	// TODO: change any to a specific type
-	login(user: User): Observable<any> {
+	private saveToken(tokenResponse: TokenResponse): void {
+		const token = tokenResponse.token;
+		if (token) {
+			this.token = token;
+			localStorage.setItem(tokenName, token);
+		}
+	}
+
+	private getToken(): string {
+		if (!this.token) {
+			this.token = localStorage.getItem(tokenName);
+		}
+		console.log('getToken(), this.token:', this.token.slice(0, 10));
+		return this.token;
+	}
+
+	public logout(): void {
+		this.token = '';
+		localStorage.removeItem(tokenName);
+		this.router.navigateByUrl('/');
+	}
+
+	public decodeToken(): UserDetails {
+		const token = this.getToken();
+		console.log('decodeToken(), token:', token.slice(0, 10));
+		if (token) {
+			let payload = token.split('.')[1];
+			payload = atob(payload);
+			return JSON.parse(payload);
+		}
+		return null;
+	}
+
+	public isLoggedIn(): boolean {
+		const user = this.decodeToken();
+		// TODO: remove console statments
+		console.log('isLoggedIn(), user:', user);
+		if (user) {
+			return user.exp > Date.now() / 1000;
+		}
+		return false;
+	}
+
+	register(user: User): Observable<TokenResponse> {
+		authApi += '/register';
 		return this.http
-			.post(authApi, user, { ...httpHeaders });
+			.post<TokenResponse>(authApi, user, postOptions)
+			.pipe( tap(this.saveToken) );
+	}
+
+	login(user: User): Observable<TokenResponse> {
+		authApi += '/login';
+		return this.http
+			.post<TokenResponse>(authApi, user, postOptions)
+			.pipe( tap(this.saveToken) );
+	}
+
+	profile(): Observable<UserDetails> {
+		authApi += '/profile';
+		const options = {
+			headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
+		};
+		return this.http.get<UserDetails>(authApi, options);
 	}
 }
