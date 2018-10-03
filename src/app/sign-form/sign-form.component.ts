@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../shared/user';
 import { AuthService } from '../auth.service';
 
@@ -6,23 +7,23 @@ import { AuthService } from '../auth.service';
 	templateUrl: './sign-form.component.html',
 	styleUrls: ['./sign-form.component.sass']
 })
-export class SignFormComponent implements OnInit {
-
+export class SignFormComponent {
 	user: User = {
 		email: '',
 		password: ''
 	};
 
-	constructor(private authService: AuthService) { }
-
-	ngOnInit() {
-
-	}
+	constructor(private router: Router, private auth: AuthService) { }
 
 	login() {
-		console.log(this.user);
-		this.authService
+		this.auth
 			.login(this.user)
-			.subscribe();
+			.subscribe(
+				() => {
+					console.log('success login subscribe');
+					this.router.navigateByUrl('/profile');
+				},
+				err => console.error('error in login subscribe:', err)
+			);
 	}
 }
