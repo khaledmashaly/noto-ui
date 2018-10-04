@@ -28,11 +28,11 @@ export class AuthService {
 		}
 	}
 
-	private getToken(): string {
+	public getToken(): string {
 		if (!this.token) {
 			this.token = localStorage.getItem(tokenName);
 		}
-		console.log('getToken(), this.token:', this.token.slice(0, 10));
+		console.log('getToken(), this.token:', this.token && this.token.slice(0, 10));
 		return this.token;
 	}
 
@@ -44,7 +44,7 @@ export class AuthService {
 
 	public decodeToken(): UserDetails {
 		const token = this.getToken();
-		console.log('decodeToken(), token:', token.slice(0, 10));
+		console.log('decodeToken(), token:', token && token.slice(0, 10));
 		if (token) {
 			let payload = token.split('.')[1];
 			payload = atob(payload);
