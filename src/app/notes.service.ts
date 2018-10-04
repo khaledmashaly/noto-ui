@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { Note } from './shared/note';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Note } from './shared/note';
+import { AuthService } from './auth.service';
 
-const api = 'http://localhost:3000/notes';
+const api = 'http://localhost:3000/api/notes';
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -13,7 +14,7 @@ const httpOptions = {
 	providedIn: 'root'
 })
 export class NotesService {
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient, private auth: AuthService) { }
 
 	getNote(id: string): Observable<Note> {
 		const url = `${api}/${id}`;
@@ -22,7 +23,11 @@ export class NotesService {
 	}
 
 	getNotes(): Observable<Note[]> {
-		return this.http.get<Note[]>(api)
+		const token = this.auth.getToken();
+		const options = {
+			headers: new HttpHeaders({ 'Authorization': `Bearer ${token}` })
+		};
+		return this.http.get<Note[]>(api, options)
 			.pipe( catchError(this.handleError('getNotes', [])) );
 	}
 
@@ -44,12 +49,6 @@ export class NotesService {
 			.pipe( catchError(this.handleError<any>('editNote')) );
 	}
 
-	/**
-	 * Handle Http operation that failed.
-	 * Let the app continue.
-	 * @param operation - name of the operation that failed
-	 * @param result - optional value to return as the observable result
-	 */
 	private handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			// TODO: send the error to remote logging infrastructure
