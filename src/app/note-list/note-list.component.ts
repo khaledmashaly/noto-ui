@@ -29,11 +29,8 @@ export class NoteListComponent implements OnInit {
 	}
 
 	createNote(): void {
-		this.notesService.createNote({ title: '', body: '' })
-			.subscribe(res => {
-				const id = res.replace(/"/g, '');
-				this.editNote(id);
-			});
+		this.notesService.createNote()
+			.subscribe(res => this.editNote(res.id));
 	}
 
 	editNote(id: string): void {
