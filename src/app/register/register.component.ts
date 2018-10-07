@@ -19,7 +19,7 @@ export class RegisterComponent {
 		this.auth
 			.register(this.user)
 			.subscribe(
-				() => this.router.navigateByUrl('/profile'),
+				() => this.router.navigate(['/notes']),
 				err => console.error(err)
 			);
 	}

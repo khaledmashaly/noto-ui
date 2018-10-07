@@ -21,7 +21,7 @@ export class SignFormComponent {
 			.subscribe(
 				() => {
 					console.log('success login subscribe');
-					this.router.navigateByUrl('/profile');
+					this.router.navigate(['/notes']);
 				},
 				err => console.error('error in login subscribe:', err)
 			);
