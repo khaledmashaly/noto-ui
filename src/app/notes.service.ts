@@ -2,50 +2,64 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Note } from './shared/note';
+import { Note, HttpOptions } from './shared/note';
 import { AuthService } from './auth.service';
 
-const api = 'http://localhost:3000/api/notes';
-const httpOptions = {
-	headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-};
+const api = '/api/notes';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class NotesService {
+
 	constructor(private http: HttpClient, private auth: AuthService) { }
 
-	getNote(id: string): Observable<Note> {
-		const url = `${api}/${id}`;
-		return this.http.get<Note>(url)
-			.pipe( catchError(this.handleError<Note>(`getNote _id=${id}`)) );
+	/**
+	 * set headers for http requests
+	 * @param body true if request has a body e.g. POST, PUT requests
+	 */
+	private setHeaders(body: boolean = false): HttpOptions {
+		const token = this.auth.getToken();
+		let headers: any = { 'Authorization': `Bearer ${token}` };
+		if (body) {
+			headers = {
+				...headers,
+				'Content-Type': 'application/json'
+			};
+		}
+		return { headers: new HttpHeaders(headers)};
 	}
 
 	getNotes(): Observable<Note[]> {
-		const token = this.auth.getToken();
-		const options = {
-			headers: new HttpHeaders({ 'Authorization': `Bearer ${token}` })
-		};
+		const options = this.setHeaders();
 		return this.http.get<Note[]>(api, options)
-			.pipe( catchError(this.handleError('getNotes', [])) );
+			.pipe(catchError(this.handleError('getNotes', [])));
+	}
+
+	getNote(id: string): Observable<Note> {
+		const options = this.setHeaders();
+		const url = `${api}/${id}`;
+		return this.http.get<Note>(url, options)
+			.pipe( catchError(this.handleError<Note>(`getNote id=${id}`)) );
 	}
 
 	deleteNote(id: string): Observable<{}> {
+		const options = this.setHeaders();
 		const url = `${api}/${id}`;
-		console.log(`deleted note _id ${id}`);
-		return this.http.delete(url)
+		return this.http.delete(url, options)
 			.pipe( catchError(this.handleError('deleteNote', [])) );
 	}
 
-	createNote(note: Note): Observable<string> {
-		return this.http.post(api, note, { ...httpOptions, responseType: 'text' })
+	createNote(): Observable<any> {
+		const options = this.setHeaders();
+		return this.http.post(api, options)
 			.pipe( catchError(this.handleError('createNote', 'some fake id')) );
 	}
 
 	editNote(note: Note): Observable<any> {
+		const options = this.setHeaders(true);
 		const url = `${api}/${note._id}`;
-		return this.http.put(url, note, httpOptions)
+		return this.http.put(url, note, options)
 			.pipe( catchError(this.handleError<any>('editNote')) );
 	}
 
