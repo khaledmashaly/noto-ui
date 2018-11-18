@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { User } from './shared/user';
 import { TokenResponse, UserDetails } from './shared/auth';
 
-let authApi = 'http://localhost:3000/auth';
+const baseAuthApi = '/auth';
 const postOptions = {
 	headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -64,17 +64,15 @@ export class AuthService {
 	}
 
 	register(user: User): Observable<TokenResponse> {
-		authApi += '/register';
-		return this.http
-			.post<TokenResponse>(authApi, user, postOptions)
-			.pipe( tap(this.saveToken) );
+		const registerApi = baseAuthApi + '/register';
+		return this.http.post<TokenResponse>(registerApi, user, postOptions)
+						.pipe( tap(this.saveToken) );
 	}
 
 	login(user: User): Observable<TokenResponse> {
-		authApi += '/login';
-		return this.http
-			.post<TokenResponse>(authApi, user, postOptions)
-			.pipe( tap(this.saveToken) );
+		const loginApi = baseAuthApi + '/login';
+		return this.http.post<TokenResponse>(loginApi, user, postOptions)
+						.pipe( tap(this.saveToken) );
 	}
 
 	profile(): Observable<UserDetails> {
