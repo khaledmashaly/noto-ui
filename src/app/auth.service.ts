@@ -75,11 +75,11 @@ export class AuthService {
 						.pipe( tap(this.saveToken) );
 	}
 
-	profile(): Observable<UserDetails> {
+	/* profile(): Observable<UserDetails> {
 		authApi += '/profile';
 		const options = {
 			headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` })
 		};
 		return this.http.get<UserDetails>(authApi, options);
-	}
+	} */
 }
