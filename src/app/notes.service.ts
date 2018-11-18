@@ -52,7 +52,7 @@ export class NotesService {
 
 	createNote(): Observable<any> {
 		const options = this.setHeaders();
-		return this.http.post(api, options)
+		return this.http.post(api, null, options)
 			.pipe( catchError(this.handleError('createNote', 'some fake id')) );
 	}
 
