@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { httpInterceptorProviders } from './interceptors/index';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -47,7 +48,9 @@ import { HomeComponent } from './home/home.component';
 		MatInputModule,
 		MatMenuModule
 	],
-	providers: [],
+	providers: [
+		httpInterceptorProviders
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
