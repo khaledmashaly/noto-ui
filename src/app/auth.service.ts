@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -69,10 +69,18 @@ export class AuthService {
 						.pipe( tap(this.saveToken) );
 	}
 
-	login(user: User): Observable<TokenResponse> {
-		const loginApi = baseAuthApi + '/login';
-		return this.http.post<TokenResponse>(loginApi, user, postOptions)
-						.pipe( tap(this.saveToken) );
+	login(user: User): Observable<void> {
+		return this.http.post<void>('login', user)
+						.pipe(
+							tap(
+								() => {
+									console.log('login success');
+								},
+								(e: HttpErrorResponse) => {
+									console.error(e.statusText);
+								}
+							)
+						);
 	}
 
 	profile(): Observable<UserDetails> {
