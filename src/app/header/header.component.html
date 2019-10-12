@@ -2,12 +2,13 @@
 	<span>Noto</span>
 	<span class="header-spacer"></span>
 	<a *ngIf="isLoggedIn" routerLink="/profile" mat-button>
-		<mat-icon>person</mat-icon> {{user.email}}
+		<mat-icon>person</mat-icon> {{ this.user.email }}
 	</a>
-	<a *ngIf="!isLoggedIn" routerLink="/login" mat-button>
+	<!--
+	<a *ngIf="!isLoggedIn | async" routerLink="/login" mat-button>
 		<mat-icon>person</mat-icon> Login
 	</a>
-	<a *ngIf="!isLoggedIn" routerLink="/register" mat-button>
+	<a *ngIf="!isLoggedIn | async" routerLink="/register" mat-button>
 		<mat-icon>person_add</mat-icon> Register
-	</a>
+	</a> -->
 </mat-toolbar>

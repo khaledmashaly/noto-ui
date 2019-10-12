@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from './shared/user';
 import { TokenResponse, UserDetails } from './shared/auth';
+import { Store } from '@ngrx/store';
+import { UserState } from './store/states/user.state';
+import { setActiveUser } from './store/actions/user.actions';
 
 const baseAuthApi = '/auth';
 const postOptions = {
@@ -18,7 +21,11 @@ const tokenName = 'jwt-token';
 export class AuthService {
 	private token = '';
 
-	constructor(private http: HttpClient, private router: Router) { }
+	constructor(
+		private http: HttpClient,
+		private router: Router,
+		private userStore: Store<UserState>
+	) { }
 
 	private saveToken(tokenResponse: TokenResponse): void {
 		const token = tokenResponse.token;
@@ -75,6 +82,13 @@ export class AuthService {
 							tap(
 								() => {
 									console.log('login success');
+									this.userStore.dispatch(setActiveUser({
+										user: {
+											email: '5aledmaged',
+											fullname: 'khaled maged',
+											password: '131414'
+										}
+									}));
 								},
 								(e: HttpErrorResponse) => {
 									console.error(e.statusText);

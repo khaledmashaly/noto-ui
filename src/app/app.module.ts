@@ -22,6 +22,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/reducres/user.reducers';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -39,6 +42,11 @@ import { HomeComponent } from './home/home.component';
 		AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
+
+		StoreModule.forRoot({
+			user: userReducer
+		}),
+
 		MatToolbarModule,
 		MatIconModule,
 		MatButtonModule,
