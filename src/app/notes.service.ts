@@ -19,8 +19,7 @@ export class NotesService {
 	 * @param body true if request has a body e.g. POST, PUT requests
 	 */
 	private setHeaders(body: boolean = false): HttpOptions {
-		const token = this.auth.getToken();
-		let headers: any = { 'Authorization': `Bearer ${token}` };
+		let headers: any = { 'Authorization': `Bearer token` };
 		if (body) {
 			headers = {
 				...headers,
