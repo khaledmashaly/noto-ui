@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { User } from '../shared/user';
+import { User } from '../entities/User';
 
 @Component({
 	templateUrl: './register.component.html',
