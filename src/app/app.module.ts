@@ -23,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/reducres/user.reducers';
+import { reducerMap } from './store/reducres';
+import { storeConfig } from './store';
 
 @NgModule({
 	declarations: [
@@ -43,9 +44,7 @@ import { userReducer } from './store/reducres/user.reducers';
 		HttpClientModule,
 		FormsModule,
 
-		StoreModule.forRoot({
-			user: userReducer
-		}),
+		StoreModule.forRoot(reducerMap, storeConfig),
 
 		MatToolbarModule,
 		MatIconModule,

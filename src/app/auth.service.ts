@@ -6,8 +6,8 @@ import { tap } from 'rxjs/operators';
 import { User } from './shared/user';
 import { TokenResponse, UserDetails } from './shared/auth';
 import { Store } from '@ngrx/store';
-import { UserState } from './store/states/user.state';
 import { setActiveUser } from './store/actions/user.actions';
+import { AppState } from './store/states/app.state';
 
 const baseAuthApi = '/auth';
 const postOptions = {
@@ -24,7 +24,7 @@ export class AuthService {
 	constructor(
 		private http: HttpClient,
 		private router: Router,
-		private userStore: Store<UserState>
+		private store: Store<AppState>
 	) { }
 
 	private saveToken(tokenResponse: TokenResponse): void {
@@ -82,7 +82,7 @@ export class AuthService {
 							tap(
 								() => {
 									console.log('login success');
-									this.userStore.dispatch(setActiveUser({
+									this.store.dispatch(setActiveUser({
 										user: {
 											email: '5aledmaged',
 											fullname: 'khaled maged',

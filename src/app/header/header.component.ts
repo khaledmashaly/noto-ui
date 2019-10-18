@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../entities/User';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/states/app.state';
 // import { Router, NavigationEnd } from '@angular/router';
 // import { AuthService } from '../auth.service';
 // import { UserDetails } from '../shared/auth';
 // import { Observable, of } from 'rxjs';
 // import { filter } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
-import { UserState } from '../store/states/user.state';
-import { User } from '../entities/User';
 
 @Component({
 	selector: 'app-header',
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 	constructor(
 		// private router: Router,
 		// private auth: AuthService,
-		private userStore: Store<UserState>
+		private store: Store<AppState>
 	) {
 		// this.navEnd = this.router.events.pipe(
 		// 	filter(event => event instanceof NavigationEnd)
@@ -29,10 +29,12 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.userStore.select(userStore => userStore).subscribe((userSate) => {
-			this.user = userSate.user;
-			this.isLoggedIn = userSate.isLoggedIn;
-		});
+		this.store
+				.select(appState => appState.userState)
+				.subscribe(userSate => {
+					this.user = userSate.user;
+					this.isLoggedIn = userSate.isLoggedIn;
+				});
 		// this.checkLoginStatus();
 		// this.navEnd.subscribe(() => {
 		// 	this.checkLoginStatus();
