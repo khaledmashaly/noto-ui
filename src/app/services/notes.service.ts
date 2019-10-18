@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Note, HttpOptions } from './shared/note';
+import { Note, HttpOptions } from '../shared/note';
 import { AuthService } from './auth.service';
 
 const api = '/api/notes';

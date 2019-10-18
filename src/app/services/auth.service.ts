@@ -3,11 +3,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from './entities/User';
-import { TokenResponse, UserDetails } from './shared/auth';
+import { User } from '../entities/User';
+import { TokenResponse, UserDetails } from '../shared/auth';
 import { Store } from '@ngrx/store';
-import { setActiveUser } from './store/actions/user.actions';
-import { AppState } from './store/states/app.state';
+import { setActiveUser } from '../store/actions/user.actions';
+import { AppState } from '../store/states/app.state';
 
 const baseAuthApi = '/auth';
 const postOptions = {

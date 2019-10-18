@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../entities/User';
-import { AuthService } from '../auth.service';
+import { User } from '../../entities/User';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 	templateUrl: './sign-form.component.html',

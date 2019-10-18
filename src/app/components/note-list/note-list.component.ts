@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Note } from '../shared/note';
-import { NotesService } from '../notes.service';
+import { Note } from '../../shared/note';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
 	templateUrl: './note-list.component.html',

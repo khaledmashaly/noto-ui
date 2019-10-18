@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { UserDetails } from '../shared/auth';
+import { AuthService } from '../../services/auth.service';
+import { UserDetails } from '../../shared/auth';
 
 @Component({
 	templateUrl: './profile.component.html',

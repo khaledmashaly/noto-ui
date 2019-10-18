@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../entities/User';
+import { User } from '../../entities/User';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/states/app.state';
+import { AppState } from '../../store/states/app.state';
 // import { Router, NavigationEnd } from '@angular/router';
 // import { AuthService } from '../auth.service';
 // import { UserDetails } from '../shared/auth';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Note } from '../shared/note';
-import { NotesService } from '../notes.service';
+import { Note } from '../../shared/note';
+import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 

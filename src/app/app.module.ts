@@ -13,14 +13,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { NoteListComponent } from './note-list/note-list.component';
-import { EditNoteComponent } from './edit-note/edit-note.component';
-import { SignFormComponent } from './sign-form/sign-form.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
+import { AppComponent } from './components/app/app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NoteListComponent } from './components/note-list/note-list.component';
+import { EditNoteComponent } from './components/edit-note/edit-note.component';
+import { SignFormComponent } from './components/sign-form/sign-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducerMap } from './store/reducres';
