@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../entities/User';
-import { TokenResponse, UserDetails } from '../shared/auth';
+import { TokenResponse } from '../shared/auth';
 import { Store } from '@ngrx/store';
 import { setActiveUser } from '../store/actions/user.actions';
 import { AppState } from '../store/states/app.state';
@@ -56,11 +56,11 @@ export class AuthService {
 						);
 	}
 
-	profile(): Observable<UserDetails> {
+	profile(): Observable<User> {
 		const profileApi = baseAuthApi + '/profile';
 		const options = {
 			headers: new HttpHeaders({ 'Authorization': `Bearer` })
 		};
-		return this.http.get<UserDetails>(profileApi, options);
+		return this.http.get<User>(profileApi, options);
 	}
 }
