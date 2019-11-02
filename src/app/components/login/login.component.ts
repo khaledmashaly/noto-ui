@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 	};
 
 	loading = false;
+	errorMessage = '';
 
 	constructor(
 		private router: Router,
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
 			.select(appState => appState.userState)
 			.subscribe(userState => {
 				this.loading = userState.loading;
+				this.errorMessage = userState.errorMessage;
 			});
 	}
 

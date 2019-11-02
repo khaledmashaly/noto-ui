@@ -17,5 +17,7 @@
 			</mat-form-field>
 			<button [disabled]="signForm.invalid" mat-raised-button color="primary" type="submit">log in</button>
 		</form>
+		<p *ngIf="loading">loading........................</p>
+		<p *ngIf="errorMessage">{{ errorMessage }}</p>
 	</mat-card-content>
 </mat-card>
