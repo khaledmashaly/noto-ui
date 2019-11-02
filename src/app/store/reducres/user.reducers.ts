@@ -8,7 +8,9 @@ export const userReducer = createReducer(
 	on(setActiveUser, (state, { user }) => {
 		return {
 			user,
-			isLoggedIn: true
+			isLoggedIn: true,
+			loading: false,
+			error: null
 		};
 	})
 );
