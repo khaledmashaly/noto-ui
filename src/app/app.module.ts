@@ -17,7 +17,7 @@ import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { EditNoteComponent } from './components/edit-note/edit-note.component';
-import { SignFormComponent } from './components/sign-form/sign-form.component';
+import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,7 +32,7 @@ import { storeConfig } from './store';
 		HeaderComponent,
 		NoteListComponent,
 		EditNoteComponent,
-		SignFormComponent,
+		LoginComponent,
 		ProfileComponent,
 		RegisterComponent,
 		HomeComponent

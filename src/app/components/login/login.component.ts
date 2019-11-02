@@ -4,10 +4,10 @@ import { User } from '../../entities/User';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-	templateUrl: './sign-form.component.html',
-	styleUrls: ['./sign-form.component.sass']
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.sass']
 })
-export class SignFormComponent {
+export class LoginComponent {
 	user: User = {
 		email: '',
 		password: ''
