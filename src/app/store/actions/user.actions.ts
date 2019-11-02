@@ -6,7 +6,7 @@ interface UserLoginProps {
 }
 
 interface UserLoginFailProps {
-	error: Error;
+	errorMessage: string;
 }
 
 export const setActiveUser = createAction('[User] Set Active User', props<{ user: User }>());

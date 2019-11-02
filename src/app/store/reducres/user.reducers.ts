@@ -10,7 +10,7 @@ export const userReducer = createReducer(
 			user,
 			isLoggedIn: true,
 			loading: false,
-			error: null
+			errorMessage: ''
 		};
 	}),
 	on(userLogin, () => {
@@ -18,7 +18,7 @@ export const userReducer = createReducer(
 			user: null,
 			isLoggedIn: false,
 			loading: true,
-			error: null
+			errorMessage: ''
 		};
 	}),
 	on(userLoginSuccess, () => {
@@ -26,7 +26,7 @@ export const userReducer = createReducer(
 			user: null,
 			isLoggedIn: true,
 			loading: false,
-			error: null
+			errorMessage: ''
 		};
 	}),
 	on(userLoginFail, (state, action) => {
@@ -34,7 +34,7 @@ export const userReducer = createReducer(
 			user: null,
 			isLoggedIn: false,
 			loading: false,
-			error: action.error
+			errorMessage: action.errorMessage
 		};
 	})
 );

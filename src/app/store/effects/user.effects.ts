@@ -14,7 +14,9 @@ export class UserEffects {
 			exhaustMap(
 				(action) => this.authService.login(action.user).pipe(
 					map(() => userLoginSuccess()),
-					catchError((error) => of(userLoginFail(error)))
+					catchError((error) => of(
+						userLoginFail({ errorMessage: error.message })
+					))
 				)
 			)
 		)
