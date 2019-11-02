@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap  } from 'rxjs/operators';
 import { User } from '../entities/User';
 import { TokenResponse } from '../shared/auth';
 import { Store } from '@ngrx/store';
-import { setActiveUser } from '../store/actions/user.actions';
 import { AppState } from '../store/states/app.state';
 
 const baseAuthApi = '/auth';
@@ -25,7 +24,7 @@ export class AuthService {
 		private store: Store<AppState>
 	) { }
 
-	public logout(): void {
+	public logout() {
 		this.router.navigateByUrl('/');
 	}
 
@@ -35,28 +34,11 @@ export class AuthService {
 						.pipe( tap(console.log) );
 	}
 
-	login(user: User): Observable<void> {
-		return this.http.post<void>('login', user)
-						.pipe(
-							tap(
-								() => {
-									console.log('login success');
-									this.store.dispatch(setActiveUser({
-										user: {
-											email: '5aledmaged',
-											fullname: 'khaled maged',
-											password: '131414'
-										}
-									}));
-								},
-								(e: HttpErrorResponse) => {
-									console.error(e.statusText);
-								}
-							)
-						);
+	login(user: User) {
+		return this.http.post('login', user);
 	}
 
-	profile(): Observable<User> {
+	profile() {
 		const profileApi = baseAuthApi + '/profile';
 		const options = {
 			headers: new HttpHeaders({ 'Authorization': `Bearer` })
