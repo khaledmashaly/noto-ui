@@ -25,6 +25,8 @@ import { HomeComponent } from './components/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { reducerMap } from './store/reducres';
 import { storeConfig } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/effects/user.effects';
 
 @NgModule({
 	declarations: [
@@ -45,6 +47,7 @@ import { storeConfig } from './store';
 		FormsModule,
 
 		StoreModule.forRoot(reducerMap, storeConfig),
+		EffectsModule.forRoot([UserEffects]),
 
 		MatToolbarModule,
 		MatIconModule,
