@@ -1,14 +1,15 @@
 <mat-toolbar color="primary">
 	<span>Noto</span>
 	<span class="header-spacer"></span>
-	<a *ngIf="isLoggedIn" routerLink="/profile" mat-button>
+	<a *ngIf="isLoggedIn; else elseBlock" routerLink="/profile" mat-button>
 		<mat-icon>person</mat-icon> {{ this.user.email }}
 	</a>
-	<!--
-	<a *ngIf="!isLoggedIn | async" routerLink="/login" mat-button>
-		<mat-icon>person</mat-icon> Login
-	</a>
-	<a *ngIf="!isLoggedIn | async" routerLink="/register" mat-button>
-		<mat-icon>person_add</mat-icon> Register
-	</a> -->
+	<ng-template #elseBlock>
+		<a routerLink="/login" mat-button>
+			<mat-icon>person</mat-icon> Login
+		</a>
+		<a routerLink="/register" mat-button>
+			<mat-icon>person_add</mat-icon> Register
+		</a>
+	</ng-template>
 </mat-toolbar>
