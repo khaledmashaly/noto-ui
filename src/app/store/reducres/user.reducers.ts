@@ -1,6 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { User } from '../../entities/User';
-import { setActiveUser, userLogin, userLoginSuccess, userLoginFail } from '../actions/user.actions';
+import { setActiveUser, userLogin, userLoadProfile, userLoginFail } from '../actions/user.actions';
 import { UserState, userInitialState } from '../states/user.state';
 
 export const userReducer = createReducer(
@@ -21,7 +21,7 @@ export const userReducer = createReducer(
 			errorMessage: ''
 		};
 	}),
-	on(userLoginSuccess, () => {
+	on(userLoadProfile, () => {
 		return {
 			user: null,
 			isLoggedIn: true,

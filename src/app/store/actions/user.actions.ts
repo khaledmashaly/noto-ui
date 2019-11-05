@@ -12,5 +12,5 @@ interface UserLoginFailProps {
 export const setActiveUser = createAction('[User] Set Active User', props<{ user: User }>());
 
 export const userLogin = createAction('[User] login', props<UserLoginProps>());
-export const userLoginSuccess = createAction('[User] login success');
+export const userLoadProfile = createAction('[User] load profile');
 export const userLoginFail = createAction('[User] login fail', props<UserLoginFailProps>());
