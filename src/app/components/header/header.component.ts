@@ -14,6 +14,7 @@ import { AppState } from '../../store/states/app.state';
 	styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
+	loading = false;
 	isLoggedIn = false;
 	user: User = null;
 	// navEnd: Observable<NavigationEnd>;
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
 				.subscribe(userSate => {
 					this.user = userSate.user;
 					this.isLoggedIn = userSate.isLoggedIn;
+					this.loading = userSate.loading;
 				});
 		// this.checkLoginStatus();
 		// this.navEnd.subscribe(() => {

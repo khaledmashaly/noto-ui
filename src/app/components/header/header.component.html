@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
 	<span>Noto</span>
 	<span class="header-spacer"></span>
-	<a *ngIf="isLoggedIn; else elseBlock" routerLink="/profile" mat-button>
+	<a *ngIf="isLoggedIn && !loading; else elseBlock" routerLink="/profile" mat-button>
 		<mat-icon>person</mat-icon> {{ this.user.email }}
 	</a>
 	<ng-template #elseBlock>
