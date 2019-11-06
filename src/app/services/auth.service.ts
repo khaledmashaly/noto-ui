@@ -39,10 +39,6 @@ export class AuthService {
 	}
 
 	profile() {
-		const profileApi = baseAuthApi + '/profile';
-		const options = {
-			headers: new HttpHeaders({ 'Authorization': `Bearer` })
-		};
-		return this.http.get<User>(profileApi, options);
+		return this.http.get<User>('auth/profile');
 	}
 }
