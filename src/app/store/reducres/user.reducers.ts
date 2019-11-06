@@ -24,7 +24,7 @@ export const userReducer = createReducer(
 		return {
 			user: null,
 			isLoggedIn: true,
-			loading: false,
+			loading: true,
 			errorMessage: ''
 		};
 	}),
