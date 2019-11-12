@@ -39,6 +39,6 @@ export class AuthService {
 	}
 
 	profile() {
-		return this.http.get<User>('auth/profile');
+		return this.http.get<User>('user/profile');
 	}
 }
