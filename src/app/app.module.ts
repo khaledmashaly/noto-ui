@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -54,7 +55,8 @@ import { UserEffects } from './store/effects/user.effects';
 		MatButtonModule,
 		MatCardModule,
 		MatInputModule,
-		MatMenuModule
+		MatMenuModule,
+		MatProgressSpinnerModule
 	],
 	providers: [
 		httpInterceptorProviders
