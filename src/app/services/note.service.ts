@@ -10,7 +10,7 @@ const api = '/api/notes';
 @Injectable({
 	providedIn: 'root'
 })
-export class NotesService {
+export class NoteService {
 
 	constructor(private http: HttpClient, private auth: AuthService) { }
 

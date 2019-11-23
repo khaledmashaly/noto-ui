@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Note } from '../../shared/note';
-import { NotesService } from '../../services/notes.service';
+import { NoteService } from '../../services/note.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -16,7 +16,7 @@ export class EditNoteComponent implements OnInit {
 	};
 
 	constructor(
-		private noteService: NotesService,
+		private noteService: NoteService,
 		private route: ActivatedRoute,
 		private location: Location
 	) { }

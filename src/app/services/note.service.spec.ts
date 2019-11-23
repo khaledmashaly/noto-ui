@@ -1,14 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { NotesService } from './notes.service';
+import { NoteService } from './note.service';
 
 describe('NotesService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [NotesService]
+			providers: [NoteService]
 		});
 	});
 
-	it('should be created', inject([NotesService], (service: NotesService) => {
+	it('should be created', inject([NoteService], (service: NoteService) => {
 		expect(service).toBeTruthy();
 	}));
 });

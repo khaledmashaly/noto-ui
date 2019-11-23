@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from '../../shared/note';
-import { NotesService } from '../../services/notes.service';
+import { NoteService } from '../../services/note.service';
 
 @Component({
 	templateUrl: './note-list.component.html',
@@ -10,7 +10,7 @@ import { NotesService } from '../../services/notes.service';
 export class NoteListComponent implements OnInit {
 	noteList: Note[];
 	constructor(
-		private notesService: NotesService,
+		private notesService: NoteService,
 		private router: Router
 	) { }
 
