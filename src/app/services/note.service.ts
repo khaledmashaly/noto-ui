@@ -11,8 +11,9 @@ const api = '/api/notes';
 	providedIn: 'root'
 })
 export class NoteService {
+	private API_URL = 'note';
 
-	constructor(private http: HttpClient, private auth: AuthService) { }
+	constructor(private http: HttpClient) { }
 
 	/**
 	 * set headers for http requests
@@ -30,8 +31,7 @@ export class NoteService {
 	}
 
 	getNotes(): Observable<Note[]> {
-		const options = this.setHeaders();
-		return this.http.get<Note[]>(api, options)
+		return this.http.get<Note[]>(this.API_URL)
 			.pipe(catchError(this.handleError('getNotes', [])));
 	}
 
