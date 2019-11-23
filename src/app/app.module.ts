@@ -28,6 +28,8 @@ import { reducerMap } from './store/reducres';
 import { storeConfig } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -49,6 +51,10 @@ import { UserEffects } from './store/effects/user.effects';
 
 		StoreModule.forRoot(reducerMap, storeConfig),
 		EffectsModule.forRoot([UserEffects]),
+		StoreDevtoolsModule.instrument({
+			maxAge: 25, // Retains last 25 states
+			logOnly: environment.production,
+		}),
 
 		MatToolbarModule,
 		MatIconModule,

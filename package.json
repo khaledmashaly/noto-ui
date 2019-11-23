@@ -25,6 +25,7 @@
     "@angular/router": "^8.2.10",
     "@ngrx/effects": "^8.4.0",
     "@ngrx/store": "^8.4.0",
+    "@ngrx/store-devtools": "^8.5.2",
     "concurrently": "^3.6.1",
     "core-js": "^2.6.9",
     "faker": "^4.1.0",
