@@ -17,12 +17,21 @@ const postOptions = {
 	providedIn: 'root'
 })
 export class AuthService {
+	private authenticated = false;
 
 	constructor(
 		private http: HttpClient,
 		private router: Router,
 		private store: Store<AppState>
-	) { }
+	) {
+		this.store
+			.select(appState => appState.userState)
+			.subscribe(userState => this.authenticated = userState.isLoggedIn);
+	}
+
+	public isAuthenticated() {
+		return this.authenticated;
+	}
 
 	public logout() {
 		this.router.navigateByUrl('/');
