@@ -1,27 +1,18 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../store/states/app.state';
+import { AuthService } from './auth.service';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, OnInit {
-	isLoggedIn = false;
-
+export class AuthGuard implements CanActivate {
 	constructor(
-		private store: Store<AppState>,
-		private router: Router
+		private router: Router,
+		private authService: AuthService
 	) {}
 
-	ngOnInit() {
-		this.store
-			.select(appState => appState.userState.isLoggedIn)
-			.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
-	}
-
 	canActivate() {
-		if (!this.isLoggedIn) {
+		if (!this.authService.isAuthenticated()) {
 			this.router.navigateByUrl('/');
 			return false;
 		}
