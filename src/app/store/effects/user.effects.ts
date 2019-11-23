@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
@@ -26,7 +27,10 @@ export class UserEffects {
 		ofType(userLoadProfile),
 		exhaustMap(
 			() => this.authService.profile().pipe(
-				map((user) => userLoadProfileSuccess({ user })),
+				map((user) => {
+					this.router.navigateByUrl('/notes');
+					return userLoadProfileSuccess({ user });
+				}),
 				catchError((error) => of(
 					userLoginFail({ errorMessage: error.message })
 				))
@@ -35,6 +39,7 @@ export class UserEffects {
 	));
 
 	constructor(
+		private router: Router,
 		private actions$: Actions,
 		private authService: AuthService
 	) { }
