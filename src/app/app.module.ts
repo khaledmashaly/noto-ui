@@ -31,6 +31,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
 
 @NgModule({
 	declarations: [
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment';
 		LoginComponent,
 		ProfileComponent,
 		RegisterComponent,
-		HomeComponent
+		HomeComponent,
+		NoteEditorComponent
 	],
 	imports: [
 		BrowserModule,
