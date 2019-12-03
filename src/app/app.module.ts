@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { httpInterceptorProviders } from './interceptors/index';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -48,6 +49,7 @@ import { environment } from '../environments/environment';
 		AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
+		ReactiveFormsModule,
 
 		StoreModule.forRoot(reducerMap, storeConfig),
 		EffectsModule.forRoot([UserEffects]),
