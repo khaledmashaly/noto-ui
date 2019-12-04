@@ -49,10 +49,8 @@ export class NoteService {
 			.pipe( catchError(this.handleError('deleteNote', [])) );
 	}
 
-	createNote(): Observable<any> {
-		const options = this.setHeaders();
-		return this.http.post(api, null, options)
-			.pipe( catchError(this.handleError('createNote', 'some fake id')) );
+	createNote(note: Note) {
+		return this.http.post(this.API_URL, note);
 	}
 
 	editNote(note: Note): Observable<any> {
