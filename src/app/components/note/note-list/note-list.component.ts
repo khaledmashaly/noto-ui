@@ -10,7 +10,7 @@ import { NoteService } from '../../../services/note.service';
 export class NoteListComponent implements OnInit {
 	noteList: Note[];
 	constructor(
-		private notesService: NoteService,
+		private noteService: NoteService,
 		private router: Router
 	) { }
 
@@ -19,13 +19,13 @@ export class NoteListComponent implements OnInit {
 	}
 
 	getNotes(): void {
-		this.notesService.getNotes()
+		this.noteService.getNotes()
 			.subscribe(notes => this.noteList = notes);
 	}
 
 	deleteNote(id: string): void {
 		this.noteList = this.noteList.filter(note => note._id !== id);
-		this.notesService.deleteNote(id).subscribe();
+		this.noteService.deleteNote(id).subscribe();
 	}
 
 	createNote(): void {
