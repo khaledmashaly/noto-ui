@@ -17,7 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { NoteListComponent } from './components/note-list/note-list.component';
+import { NoteListComponent } from './components/note/note-list/note-list.component';
 import { EditNoteComponent } from './components/edit-note/edit-note.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';

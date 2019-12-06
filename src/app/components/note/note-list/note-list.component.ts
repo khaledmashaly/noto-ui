@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Note } from '../../shared/note';
-import { NoteService } from '../../services/note.service';
+import { Note } from '../../../shared/note';
+import { NoteService } from '../../../services/note.service';
 
 @Component({
 	templateUrl: './note-list.component.html',
@@ -29,8 +29,8 @@ export class NoteListComponent implements OnInit {
 	}
 
 	createNote(): void {
-		this.notesService.createNote()
-			.subscribe(res => this.editNote(res.id));
+		// this.notesService.createNote()
+		// 	.subscribe(res => this.editNote(res.id));
 	}
 
 	editNote(id: string): void {
