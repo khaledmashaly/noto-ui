@@ -35,11 +35,8 @@ export class NoteService {
 			.pipe(catchError(this.handleError('getNotes', [])));
 	}
 
-	getNote(id: string): Observable<Note> {
-		const options = this.setHeaders();
-		const url = `${api}/${id}`;
-		return this.http.get<Note>(url, options)
-			.pipe( catchError(this.handleError<Note>(`getNote id=${id}`)) );
+	getNote(id: string) {
+		return this.http.get<Note>(`${this.API_URL}/${id}`);
 	}
 
 	deleteNote(id: string): Observable<{}> {
