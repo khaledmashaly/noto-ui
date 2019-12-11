@@ -8,7 +8,9 @@ import { NoteService } from '../../../services/note.service';
 	styleUrls: ['./note-list.component.sass']
 })
 export class NoteListComponent implements OnInit {
-	noteList: Note[];
+	noteList: Note[] = [];
+	loading = true;
+
 	constructor(
 		private noteService: NoteService,
 		private router: Router
@@ -18,22 +20,29 @@ export class NoteListComponent implements OnInit {
 		this.getNotes();
 	}
 
-	getNotes(): void {
+	getNotes() {
 		this.noteService.getNotes()
-			.subscribe(notes => this.noteList = notes);
+			.subscribe(
+				(notes) => {
+					this.noteList = notes;
+					this.loading = false;
+				},
+				(error) => {
+					console.log('note-list, getNotes error:', error);
+				}
+			);
 	}
 
-	deleteNote(id: string): void {
+	deleteNote(id: string) {
 		this.noteList = this.noteList.filter(note => note._id !== id);
 		this.noteService.deleteNote(id).subscribe();
 	}
 
-	createNote(): void {
-		// this.notesService.createNote()
-		// 	.subscribe(res => this.editNote(res.id));
+	createNote() {
+		this.router.navigateByUrl('/note');
 	}
 
-	editNote(id: string): void {
-		this.router.navigate(['/edit-note', id]);
+	editNote(id: string) {
+		this.router.navigate(['/note', id]);
 	}
 }

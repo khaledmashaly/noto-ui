@@ -1,28 +1,35 @@
 <div class="note-list-wrapper">
 	<div class="note-list">
-		<mat-card class="note-card" *ngFor="let note of noteList">
-			<mat-card-title>
-				<p>{{note.title}}</p>
+		<ng-template [ngIf]="loading" [ngIfElse]="noteGrid">
+			<mat-spinner></mat-spinner>
+		</ng-template>
 
-				<button mat-icon-button [matMenuTriggerFor]="menu">
-					<mat-icon>more_vert</mat-icon>
-				</button>
+		<ng-template #noteGrid>
+			<mat-card class="note-card" *ngFor="let note of noteList">
+				<mat-card-title>
+					<p>{{note.title}}</p>
 
-				<mat-menu #menu="matMenu">
-					<button mat-menu-item (click)="deleteNote(note._id)">
-						<mat-icon>delete</mat-icon>
-						<span>delete</span>
+					<button mat-icon-button [matMenuTriggerFor]="menu">
+						<mat-icon>more_vert</mat-icon>
 					</button>
 
-					<button mat-menu-item (click)="editNote(note._id)">
-						<mat-icon>edit</mat-icon>
-						<span>edit</span>
-					</button>
-				</mat-menu>
-			</mat-card-title>
-			<mat-card-content>{{note.body}}</mat-card-content>
-		</mat-card>
+					<mat-menu #menu="matMenu">
+						<button mat-menu-item (click)="deleteNote(note._id)">
+							<mat-icon>delete</mat-icon>
+							<span>delete</span>
+						</button>
+
+						<button mat-menu-item (click)="editNote(note._id)">
+							<mat-icon>edit</mat-icon>
+							<span>edit</span>
+						</button>
+					</mat-menu>
+				</mat-card-title>
+				<mat-card-content>{{note.body}}</mat-card-content>
+			</mat-card>
+		</ng-template>
 	</div>
+
 	<button mat-fab color="primary" class="fab" (click)="createNote()">
 		<mat-icon>add</mat-icon>
 	</button>
