@@ -28,7 +28,7 @@ export class UserEffects {
 		exhaustMap(
 			() => this.authService.profile().pipe(
 				map((user) => {
-					this.router.navigateByUrl('/notes');
+					this.router.navigateByUrl('/note/list');
 					return userLoadProfileSuccess({ user });
 				}),
 				catchError((error) => of(

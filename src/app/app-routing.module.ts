@@ -1,19 +1,55 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NoteListComponent } from './components/note-list/note-list.component';
-import { EditNoteComponent } from './components/edit-note/edit-note.component';
+import { NoteListComponent } from './components/note/note-list/note-list.component';
+import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { NoteEditorType } from './components/note/note-editor/note-editor-type.enum';
 
 const routes: Routes = [
-	{ path: 'login', component: LoginComponent },
-	{ path: 'register', component: RegisterComponent },
-	{ path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-	{ path: 'edit-note/:id', component: EditNoteComponent, canActivate: [AuthGuard] },
-	{ path: 'notes', component: NoteListComponent, canActivate: [AuthGuard] },
+	/* authentication routes */
+	{
+		path: 'login',
+		component: LoginComponent
+	},
+	{
+		path: 'register',
+		component: RegisterComponent
+	},
+	{
+		path: 'profile',
+		component: ProfileComponent,
+		canActivate: [AuthGuard]
+	},
+
+
+	/* note routes */
+	{
+		path: 'note/list',
+		component: NoteListComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'note/:id',
+		component: NoteEditorComponent,
+		canActivate: [AuthGuard],
+		data: {
+			editorType: NoteEditorType.View
+		}
+	},
+	{
+		path: 'note',
+		component: NoteEditorComponent,
+		canActivate: [AuthGuard],
+		data: {
+			editorType: NoteEditorType.Create
+		}
+	},
+
+	/* general routes */
 	{ path: '', component: HomeComponent },
 	{ path: '**', redirectTo: '' }
 ];
