@@ -3,7 +3,7 @@
 		<form [formGroup]="noteForm" (ngSubmit)="createNote()">
 			<h2>
 				<mat-form-field class="note-title form-field">
-					<input matInput type="text" formControlName="title" required>
+					<input matInput placeholder="Note Title" type="text" formControlName="title" required>
 				</mat-form-field>
 			</h2>
 
@@ -14,7 +14,7 @@
 			</div>
 
 			<mat-form-field class="note-body form-field">
-				<textarea matInput formControlName="body"></textarea>
+				<textarea matInput placeholder="Note Body" formControlName="body"></textarea>
 			</mat-form-field>
 
 			<button mat-raised-button color="primary" type="submit">save</button>
