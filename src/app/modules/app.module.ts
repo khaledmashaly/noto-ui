@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { httpInterceptorProviders } from './interceptors/index';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { httpInterceptorProviders } from '../interceptors/index';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,22 +15,22 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { AppComponent } from './components/app/app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { NoteListComponent } from './components/note/note-list/note-list.component';
-import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
+import { AppComponent } from '../components/app/app.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { NoteListComponent } from '../components/note/note-list/note-list.component';
+import { LoginComponent } from '../components/login/login.component';
+import { ProfileComponent } from '../components/profile/profile.component';
+import { RegisterComponent } from '../components/register/register.component';
+import { HomeComponent } from '../components/home/home.component';
 
 import { StoreModule } from '@ngrx/store';
-import { reducerMap } from './store/reducres';
-import { storeConfig } from './store';
+import { reducerMap } from '../store/reducres';
+import { storeConfig } from '../store';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './store/effects/user.effects';
+import { UserEffects } from '../store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
+import { environment } from '../../environments/environment';
+import { NoteEditorComponent } from '../components/note/note-editor/note-editor.component';
 
 @NgModule({
 	declarations: [

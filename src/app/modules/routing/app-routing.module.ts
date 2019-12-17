@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NoteListComponent } from './components/note/note-list/note-list.component';
-import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
-import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { NoteEditorType } from './components/note/note-editor/note-editor-type.enum';
+import { NoteListComponent } from '../../components/note/note-list/note-list.component';
+import { NoteEditorComponent } from '../../components/note/note-editor/note-editor.component';
+import { LoginComponent } from '../../components/login/login.component';
+import { ProfileComponent } from '../../components/profile/profile.component';
+import { RegisterComponent } from '../../components/register/register.component';
+import { HomeComponent } from '../../components/home/home.component';
+import { AuthGuard } from '../../services/auth-guard.service';
+import { NoteEditorType } from '../../components/note/note-editor/note-editor-type.enum';
 
 const routes: Routes = [
 	/* authentication routes */
