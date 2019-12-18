@@ -5,9 +5,11 @@ import { map, catchError, exhaustMap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { userLogin, userLoadProfile, userLoginFail, userLoadProfileSuccess } from '../actions/user.actions';
 import { of } from 'rxjs';
+import { ROUTE_NAMES } from 'src/app/modules/routing/routes-names';
 
 @Injectable()
 export class UserEffects {
+	routes = ROUTE_NAMES;
 
 	userLogin$ = createEffect(() =>
 		this.actions$.pipe(
@@ -28,7 +30,7 @@ export class UserEffects {
 		exhaustMap(
 			() => this.authService.profile().pipe(
 				map((user) => {
-					this.router.navigateByUrl('/note/list');
+					this.router.navigate([this.routes.userHome]);
 					return userLoadProfileSuccess({ user });
 				}),
 				catchError((error) => of(

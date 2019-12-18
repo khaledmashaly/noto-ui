@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Note } from '../../../shared/note';
 import { NoteService } from '../../../services/note.service';
+import { ROUTE_NAMES } from 'src/app/modules/routing/routes-names';
 
 @Component({
 	templateUrl: './note-list.component.html',
@@ -10,6 +11,7 @@ import { NoteService } from '../../../services/note.service';
 export class NoteListComponent implements OnInit {
 	noteList: Note[] = [];
 	loading = true;
+	routes = ROUTE_NAMES;
 
 	constructor(
 		private noteService: NoteService,
@@ -39,10 +41,10 @@ export class NoteListComponent implements OnInit {
 	}
 
 	createNote() {
-		this.router.navigateByUrl('/note');
+		this.router.navigate([this.routes.noteCreate]);
 	}
 
 	editNote(id: string) {
-		this.router.navigate(['/note', id]);
+		this.router.navigate([this.routes.noteEdit, id]);
 	}
 }

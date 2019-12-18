@@ -7,6 +7,7 @@ import { User } from '../entities/User';
 import { TokenResponse } from '../shared/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/states/app.state';
+import { ROUTE_NAMES } from '../modules/routing/routes-names';
 
 const baseAuthApi = '/auth';
 const postOptions = {
@@ -18,6 +19,7 @@ const postOptions = {
 })
 export class AuthService {
 	private authenticated = false;
+	routes = ROUTE_NAMES;
 
 	constructor(
 		private http: HttpClient,
@@ -34,7 +36,7 @@ export class AuthService {
 	}
 
 	public logout() {
-		this.router.navigateByUrl('/');
+		this.router.navigate([this.routes.appHome]);
 	}
 
 	register(user: User): Observable<TokenResponse> {
