@@ -15,13 +15,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { AppComponent } from '../components/app/app.component';
-import { HeaderComponent } from '../components/header/header.component';
+import { AppComponent } from '../components/core/app/app.component';
+import { HeaderComponent } from '../components/core/header/header.component';
 import { NoteListComponent } from '../components/note/note-list/note-list.component';
 import { LoginComponent } from '../components/login/login.component';
 import { ProfileComponent } from '../components/profile/profile.component';
 import { RegisterComponent } from '../components/register/register.component';
-import { HomeComponent } from '../components/home/home.component';
+import { HomeComponent } from '../components/core/home/home.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducerMap } from '../store/reducres';

@@ -5,7 +5,7 @@ import { NoteEditorComponent } from '../../components/note/note-editor/note-edit
 import { LoginComponent } from '../../components/login/login.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
 import { RegisterComponent } from '../../components/register/register.component';
-import { HomeComponent } from '../../components/home/home.component';
+import { HomeComponent } from '../../components/core/home/home.component';
 import { AuthGuard } from '../../services/auth-guard.service';
 import { NoteEditorType } from '../../components/note/note-editor/note-editor-type.enum';
 
