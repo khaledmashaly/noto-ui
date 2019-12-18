@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../entities/User';
-import { AuthService } from '../../services/auth.service';
+import { User } from '../../../entities/User';
+import { AuthService } from '../../../services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/states/app.state';
 import { userLogin } from 'src/app/store/actions/user.actions';

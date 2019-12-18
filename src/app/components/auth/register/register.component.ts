@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { User } from '../../entities/User';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../entities/User';
 import { ROUTE_NAMES } from 'src/app/modules/routing/routes-names';
 
 @Component({
