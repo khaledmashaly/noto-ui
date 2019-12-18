@@ -31,6 +31,7 @@ import { UserEffects } from './store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
+import { FloatingActionComponent } from './components/core/floating-action/floating-action.component';
 
 @NgModule({
 	declarations: [
@@ -41,7 +42,8 @@ import { NoteEditorComponent } from './components/note/note-editor/note-editor.c
 		ProfileComponent,
 		RegisterComponent,
 		HomeComponent,
-		NoteEditorComponent
+		NoteEditorComponent,
+		FloatingActionComponent
 	],
 	imports: [
 		BrowserModule,
