@@ -14,6 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './components/core/app/app.component';
 import { HeaderComponent } from './components/core/header/header.component';
@@ -66,7 +69,10 @@ import { FloatingActionComponent } from './components/core/floating-action/float
 		MatCardModule,
 		MatInputModule,
 		MatMenuModule,
-		MatProgressSpinnerModule
+		MatProgressSpinnerModule,
+		MatListModule,
+		MatDividerModule,
+		MatTooltipModule
 	],
 	providers: [
 		httpInterceptorProviders
