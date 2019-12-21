@@ -1,5 +1,8 @@
 <app-header></app-header>
 <mat-progress-spinner *ngIf="loading; else elseBlock"></mat-progress-spinner>
 <ng-template #elseBlock>
-	<router-outlet></router-outlet>
+	<div class="page-wrapper">
+		<router-outlet></router-outlet>
+		<app-floating-action class="fab"></app-floating-action>
+	</div>
 </ng-template>
