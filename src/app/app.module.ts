@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './modules/routing/app-routing.module';
-import { httpInterceptorProviders } from './interceptors/index';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { AppRoutingModule } from './modules/routing/app-routing.module';
+import { httpInterceptorProviders } from './interceptors/index';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,6 +26,8 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { HomeComponent } from './components/core/home/home.component';
+import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
+import { FloatingActionComponent } from './components/core/floating-action/floating-action.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducerMap } from './store/reducres';
@@ -32,9 +35,8 @@ import { storeConfig } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment } from '../environments/environment';
-import { NoteEditorComponent } from './components/note/note-editor/note-editor.component';
-import { FloatingActionComponent } from './components/core/floating-action/floating-action.component';
 
 @NgModule({
 	declarations: [
