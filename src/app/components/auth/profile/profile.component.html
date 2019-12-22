@@ -1,3 +1,10 @@
-<p>
-	profile works!
-</p>
+<mat-card>
+	<mat-card-title>Profile</mat-card-title>
+	<mat-card-content>
+		<mat-list *ngIf="(user$ | async) as user">
+			<mat-list-item>Fullname: {{ user.fullname }} </mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-list-item>email: {{ user.email }}</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>

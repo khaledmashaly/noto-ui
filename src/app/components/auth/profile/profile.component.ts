@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from '../../../entities/User';
+import { AppState } from 'src/app/store/states/app.state';
 
 @Component({
 	templateUrl: './profile.component.html',
 	styleUrls: ['./profile.component.sass']
 })
-export class ProfileComponent implements OnInit {
-	user: User;
+export class ProfileComponent {
+	user$ = this.store.select(({ userState }) => userState.user);
 
-	constructor(private auth: AuthService) { }
-
-	ngOnInit() {
-		this.auth.profile().subscribe(
-			user => this.user = user,
-			err => console.log(err)
-		);
-	}
-
+	constructor(
+		private store: Store<AppState>
+	) { }
 }
