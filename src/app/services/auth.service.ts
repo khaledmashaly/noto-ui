@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap  } from 'rxjs/operators';
 import { User } from '../entities/User';
-import { TokenResponse } from '../shared/auth';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/states/app.state';
 import { ROUTE_NAMES } from '../modules/routing/routes-names';
@@ -39,9 +38,9 @@ export class AuthService {
 		this.router.navigate([this.routes.appHome]);
 	}
 
-	register(user: User): Observable<TokenResponse> {
+	register(user: User) {
 		const registerApi = baseAuthApi + '/register';
-		return this.http.post<TokenResponse>(registerApi, user, postOptions)
+		return this.http.post(registerApi, user, postOptions)
 						.pipe( tap(console.log) );
 	}
 
