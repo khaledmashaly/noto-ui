@@ -30,11 +30,14 @@ import { NoteEditorComponent } from './components/note/note-editor/note-editor.c
 import { FloatingActionComponent } from './components/core/floating-action/floating-action.component';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EntityDataModule, DefaultDataServiceConfig } from '@ngrx/data';
 import { reducerMap } from './store/reducres';
 import { storeConfig } from './store';
-import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { entityConfig } from './store/data/entity-metadata';
+import { defaultDataServiceConfig } from './store/data/default-data-service-config';
 
 import { environment } from '../environments/environment';
 
@@ -60,6 +63,7 @@ import { environment } from '../environments/environment';
 
 		StoreModule.forRoot(reducerMap, storeConfig),
 		EffectsModule.forRoot([UserEffects]),
+		EntityDataModule.forRoot(entityConfig),
 		StoreDevtoolsModule.instrument({
 			maxAge: 25, // Retains last 25 states
 			logOnly: environment.production,
@@ -77,7 +81,8 @@ import { environment } from '../environments/environment';
 		MatTooltipModule
 	],
 	providers: [
-		httpInterceptorProviders
+		httpInterceptorProviders,
+		{ provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }
 	],
 	bootstrap: [AppComponent]
 })

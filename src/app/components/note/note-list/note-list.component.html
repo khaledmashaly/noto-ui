@@ -1,11 +1,11 @@
 <div class="note-list-wrapper">
 	<div class="note-list">
-		<ng-template [ngIf]="loading" [ngIfElse]="noteGrid">
+		<ng-template [ngIf]="loading$ | async" [ngIfElse]="noteGrid">
 			<mat-spinner></mat-spinner>
 		</ng-template>
 
 		<ng-template #noteGrid>
-			<mat-card class="note-card" *ngFor="let note of noteList">
+			<mat-card class="note-card" *ngFor="let note of (noteList$ | async)">
 				<mat-card-title>
 					<p>{{note.title}}</p>
 
@@ -14,12 +14,12 @@
 					</button>
 
 					<mat-menu #menu="matMenu">
-						<button mat-menu-item (click)="deleteNote(note._id)">
+						<button mat-menu-item (click)="deleteNote(note)">
 							<mat-icon>delete</mat-icon>
 							<span>delete</span>
 						</button>
 
-						<button mat-menu-item (click)="editNote(note._id)">
+						<button mat-menu-item (click)="editNote(note)">
 							<mat-icon>edit</mat-icon>
 							<span>edit</span>
 						</button>

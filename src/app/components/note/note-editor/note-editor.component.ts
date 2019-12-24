@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NoteService } from '../../../services/note.service';
-import { Note } from 'src/app/shared/note';
+import { Note } from 'src/app/entities/Note';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NoteEditorType } from './note-editor-type.enum';
 import { switchMap } from 'rxjs/operators';
@@ -40,7 +40,7 @@ export class NoteEditorComponent implements OnInit {
 					}
 					if (this.editorType === NoteEditorType.View) {
 						const noteID = params.get('id');
-						return this.noteService.getNote(noteID);
+						return this.noteService.getByKey(noteID);
 					}
 					throw new Error('ValueError: editorType is not defined');
 				}
@@ -70,7 +70,7 @@ export class NoteEditorComponent implements OnInit {
 			title: this.title.value,
 			body: this.body.value
 		};
-		this.noteService.createNote(note)
+		this.noteService.add(note)
 			.subscribe(console.log, console.error);
 	}
 
@@ -80,7 +80,7 @@ export class NoteEditorComponent implements OnInit {
 			title: this.title.value,
 			body: this.body.value
 		};
-		this.noteService.editNote(note)
+		this.noteService.update(note)
 			.subscribe(console.log, console.error);
 	}
 
